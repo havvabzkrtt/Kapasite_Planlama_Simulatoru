@@ -18,7 +18,7 @@ from reporting import (
 
 def main():
 
-    start_time = time.time()
+    start_time_code = time.time()
 
     st.title("Kapasite Planlama Simülatörü")
 
@@ -103,8 +103,8 @@ def main():
 
 
         # --- Kod Çalışma Bilgisi ---
-        end_time = time.time()
-        execution_time = end_time - start_time
+        end_time_code = time.time()
+        execution_time = end_time_code - start_time_code
 
         # Bellek kullanımı
         process = psutil.Process(os.getpid())
