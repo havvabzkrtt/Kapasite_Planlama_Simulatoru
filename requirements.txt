@@ -1,0 +1,5 @@
+streamlit==1.26.0
+pandas==2.1.1
+matplotlib==3.8.1
+psutil==5.9.5
+pulp==2.7.0
