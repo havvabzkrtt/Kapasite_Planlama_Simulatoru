@@ -396,7 +396,7 @@ Ortalama Genel Özete bakılıyor
 - Bellek kısıtı önemliyse BF biraz daha avantajlı.
 
 
-### **Bütüm Testler için Genel Yorum:**
+### **Bütün Testler için Genel Yorum:**
 
 - **FFD ve BF benzer sonuçlar veriyor**: Ortalama kullanılan süre, kapasite kullanımı ve yaklaşık çalışma süresi çoğu testte neredeyse aynı.
 - **Bellek kullanımı:** FFD ve BF arasındaki fark testlere göre değişiyor; büyük veri setlerinde BF biraz daha az RAM kullanıyor.
