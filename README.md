@@ -105,13 +105,13 @@ Bu modül, Üretim bloklarını makineler arasında yerleştirerek minimum makin
 - Best Fit (BF)
 - ILP/MIP Kesin Çözüm (pulp)
 
-Her algoritma, `blocks` ve `capacity_limit` parametrelerini alır ve her makine için atanan bloklar ile toplam doluluk süresini içeren bir liste (`machines`) döner.
+**Not:** Bin packing probleminde kullanılan klasik algoritmalardan olan bu üç algoritma, FFD ve BF’nin hızlı ve pratik yaklaşık çözümler sunması, ILP/MIP’in ise en iyi kesin çözümü garanti etmesi nedeniyle seçilmiştir.
 
-**Girdiler:**
+**Her Algoritma için Girdiler:**
 - `blocks`: Her bloğun toplam süresini içeren liste
 - `capacity_limit`: Makine başına izin verilen maksimum süre
 
-**Çıktılar:**
+**Her Algoritma için Çıktılar:**
 - `machines`: her makine için atanan blokları ve toplam kullanım süresini içeren liste
   - `used_time`: Bu makinedeki tüm blokların toplam çalışma süresi. Yani makinenin toplam doluluk süresi.
   - `blocks` : O makineye atanmış tüm blokların listesi.
