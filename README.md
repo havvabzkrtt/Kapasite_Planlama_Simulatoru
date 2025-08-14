@@ -38,10 +38,23 @@ Bu modül, simülasyon için ürün verilerini sağlar.
 
 Bu adımda ürünler, makine kapasitesine uygun bloklara dönüştürülür:
 
-* Her ürünün **çevrim süresi** ve **yıllık sipariş adedi**, **makine başına kapasite limiti** göz önünde bulundurularak bloklara ayrılır.
+* Her ürünün **çevrim süresi (sn)** ve **yıllık sipariş adedi**, **makine başına kapasite limiti (%)**, **setup süresi (sn)**, **toplam çalışma süresi (gün)** göz önünde bulundurularak bloklara ayrılır.
 * Eğer bir ürünün toplam süresi tek blokta kapasiteyi aşarsa, bloklar parçalara bölünür; böylece her blok, makine başına izin verilen süreyi aşmaz.
 
-### Blok Süresi Hesaplama
+**Not:** Bu işlem, üretim bloklarını oluştururken her bloğun yalnızca tek bir ürün tipini içerdiğini varsayar.
+
+
+### "create_blocks.py" Modülü
+
+**Girdiler:**
+
+* `setup_time` (`w`) : Her ürün için eklenen setup süresi (saniye)
+* `work_days` : Toplam çalışma süresi (gün)
+* `usage_pct` : Makine başına kullanılabilir kapasite yüzdesi (%)
+* `products` : Ürün listesi (her ürün bir sözlük: {'t_i': çevrim süresi, 'q_i': yıllık adet})
+
+
+**Blok Süresi Hesaplama**
 
 Her blok için toplam süre şöyle hesaplanır:
 
@@ -52,21 +65,7 @@ block_time = qty × (t_i + w)
 * `qty` : Bloğa atanacak ürün adedi
 * `t_i` : Ürünün çevrim süresi
 * `w` : Setup süresi
-
-### "create_blocks.py" Modülü
-
-Bu modülün amacı, ürünlerin üretim sürelerini ve yıllık adetlerini dikkate alarak **makine kapasitesine sığacak bloklar** oluşturmaktır.
-
-* Eğer bir blok kapasiteyi aşarsa, blok parçalara bölünür.
-* Böylece her blok makine başına izin verilen süreyi aşmadan üretim planına dahil edilir.
-
-**Girdiler:**
-
-* `setup_time` : Her ürün için eklenen setup süresi (saniye)
-* `work_days` : Toplam çalışma süresi (gün)
-* `usage_pct` : Makine başına kullanılabilir kapasite yüzdesi (%)
-* `products` : Ürün listesi (her ürün bir sözlük: {'t_i': çevrim süresi, 'q_i': yıllık adet})
-
+  
 **Çıktılar:**
 
 * `blocks` : Her blok için sözlük listesi, örn.
@@ -81,9 +80,7 @@ Bu modülün amacı, ürünlerin üretim sürelerini ve yıllık adetlerini dikk
 
 * `capacity_limit` : Makine başına izin verilen maksimum çalışma süresi (saniye)
 * `total_work_sec` : Toplam çalışma süresi (saniye)
-
-**Not:** Bu fonksiyon, üretim bloklarını oluştururken her bloğun yalnızca tek bir ürün tipini içerdiğini varsayar.
-
+  
 **Modül Çalışma Mantığı**
 
 1) Toplam çalışma süresini hesaplar 
@@ -118,7 +115,6 @@ Her algoritma, `blocks` ve `capacity_limit` parametrelerini alır ve her makine 
 - `machines`: her makine için atanan blokları ve toplam kullanım süresini içeren liste
   - `used_time`: Bu makinedeki tüm blokların toplam çalışma süresi. Yani makinenin toplam doluluk süresi.
   - `blocks` : O makineye atanmış tüm blokların listesi.
-
 
 
 ### **First Fit Decreasing (FFD) Algoritması**
