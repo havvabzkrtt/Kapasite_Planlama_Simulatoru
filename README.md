@@ -91,11 +91,6 @@ block_time = qty × (t_i + w)
 - Yoksa → Kapasiteyi aşmayacak parçalara bölünür.
 5) Bloklara bölme işlemi
 
--> Diyelim ki ürünün yıllık adedi 10.000 ve bir makinenin kapasitesi bir blokta 8.000 adede izin veriyor.
-  - Fonksiyon önce ilk bloğa 8.000 adet ekler.
-  - Kalan 2.000 adet için yeni bir blok oluşturur.
-       Bu şekilde, hiçbir blok makinenin izin verilen kapasitesini aşmaz.
-
 ## **Adım 3: Blokların Makinelerde Atanması** 
 
 **Algoritmalar (algorithms.py) Modülü** 
